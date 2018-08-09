@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
+
 class Slide extends Component{
     state = {
         items:[]
@@ -8,7 +10,17 @@ class Slide extends Component{
     
     addElements () {
         return this.state.items.map((item,i) => (
-            <div className="item" key={i}>{item}</div>
+            <CSSTransition
+                classNames="item"
+                timeout={5000}
+                key={i}
+                onEntered={(node) => {
+                    node.classList.add("active")
+                }}
+            >
+                <div className="item" key={i}>{item}</div>
+
+            </CSSTransition>
         ));
     }
 
@@ -31,7 +43,15 @@ class Slide extends Component{
     render(){
         return(
             <div>
+
+                <TransitionGroup
+                    component="div"
+                    className="list"
+                >
+
                 {this.addElements()}
+
+                </TransitionGroup>
              
                 <div className="btns">
                     <div className="btn-add" onClick={()=> this.generateNumber()}>Add Elements</div>
