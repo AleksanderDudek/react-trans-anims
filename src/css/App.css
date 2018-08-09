@@ -103,6 +103,23 @@
                 CSSTRANSITIONS
 ========================================*/
 
+.square.false {
+  background: #03A9F4;
+  transform: translateX(-100%);
+}
+
+.square.true {
+  transform: translateX(0%);
+}
+
+.square-enter.square-enter-active {
+  background: rgb(3, 244, 123);
+}
+
+.square-exit.square-exit-active {
+  background: rgb(220, 244, 3);
+}
+
 /*=======================================
                 TRANSITIONS GROUP 
 ========================================*/
